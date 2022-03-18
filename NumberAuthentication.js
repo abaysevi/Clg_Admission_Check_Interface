@@ -36,6 +36,8 @@ function render() {
 function phoneAuth() {
     //get the number
     var number=document.getElementById('number').value;
+    console.log("+91"+number);
+    number="+91"+number
     //phone number authentication function of firebase
     //it takes two parameter first one is number,,,second one is recaptcha
     firebase.auth().signInWithPhoneNumber(number,window.recaptchaVerifier).then(function (confirmationResult) {
