@@ -1,26 +1,26 @@
-    //     var firebaseConfig = {
-    //     apiKey: "AIzaSyC0P4S4FYXxlVAmfmf3sv_2xn7YqgXaFFw",
-    //     authDomain: "contact-collection-clg.firebaseapp.com",
-    //     projectId: "contact-collection-clg",
-    //     storageBucket: "contact-collection-clg.appspot.com",
-    //     messagingSenderId: "707306552713",
-    //     appId: "1:707306552713:web:8dccef8d752ae61aabf558",
-    //     measurementId: "G-5VJDPSNJKZ"
-    //   };
+        var firebaseConfig = {
+        apiKey: "AIzaSyC0P4S4FYXxlVAmfmf3sv_2xn7YqgXaFFw",
+        authDomain: "contact-collection-clg.firebaseapp.com",
+        projectId: "contact-collection-clg",
+        storageBucket: "contact-collection-clg.appspot.com",
+        messagingSenderId: "707306552713",
+        appId: "1:707306552713:web:8dccef8d752ae61aabf558",
+        measurementId: "G-5VJDPSNJKZ"
+      };
 
 
     
        
-    var firebaseConfig = {
-        apiKey: "AIzaSyDkHA631nw2cOm7-3BHry1C0KVEPxBK3pY",
-        authDomain: "flutterchatapp-b1e8b.firebaseapp.com",
-        databaseURL: "https://flutterchatapp-b1e8b-default-rtdb.firebaseio.com",
-        projectId: "flutterchatapp-b1e8b",
-        storageBucket: "flutterchatapp-b1e8b.appspot.com",
-        messagingSenderId: "136681032201",
-        appId: "1:136681032201:web:e9ad8267e6d482232d46d8",
-        measurementId: "G-D9RET76V9W"
-      };
+    // var firebaseConfig = {
+    //     apiKey: "AIzaSyDkHA631nw2cOm7-3BHry1C0KVEPxBK3pY",
+    //     authDomain: "flutterchatapp-b1e8b.firebaseapp.com",
+    //     databaseURL: "https://flutterchatapp-b1e8b-default-rtdb.firebaseio.com",
+    //     projectId: "flutterchatapp-b1e8b",
+    //     storageBucket: "flutterchatapp-b1e8b.appspot.com",
+    //     messagingSenderId: "136681032201",
+    //     appId: "1:136681032201:web:e9ad8267e6d482232d46d8",
+    //     measurementId: "G-D9RET76V9W"
+    //   };
     // Initialize Firebase
           firebase.initializeApp(firebaseConfig);
 
