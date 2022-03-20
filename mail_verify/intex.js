@@ -9,11 +9,28 @@ function generateOTP() {
     return OTP;
 }
 
+function startTimer(duration, display) {
+    var timer = duration, minutes, seconds;
+    setInterval(function () {
+        minutes = parseInt(timer / 60, 10);
+        seconds = parseInt(timer % 60, 10);
+
+        minutes = minutes < 10 ? "0" + minutes : minutes;
+        seconds = seconds < 10 ? "0" + seconds : seconds;
+
+        display.textContent = minutes + ":" + seconds;
+
+        if (--timer < 0) {
+            timer = duration;
+        }
+    }, 1000);
+}
 
 
+var a=generateOTP()
 function sendEmail() {
-    var email=document.getElementById('email').value;
-    var a=generateOTP()
+	var email=document.getElementById('email').value;
+    
 	Email.send({
 	Host: "smtp.gmail.com",
 	Username : "admssthejus@gmail.com",
@@ -25,7 +42,24 @@ function sendEmail() {
 	}).then(
 		message => alert("mail sent successfully")
 	);
+	// startTimer(fiveMinutes, display);
+	var fiveMinutes = 60 * 2,
+	display = document.querySelector('#time');
+startTimer(fiveMinutes, display);
 }
+function verify(){
+	var entered_otp=document.getElementById("otp").value
+	if (entered_otp==a){
+		console.log("all set");
+		alert("otp verified");
+	}
+}
+
+
+
+
+
+
 // var sent_otp=generateOTP()
 // var nodemailer=require("nodemailer")
 // function sendEmail() {
