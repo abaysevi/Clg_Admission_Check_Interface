@@ -29,7 +29,8 @@ function startTimer(duration, display) {
 
 var a=generateOTP()
 function sendEmail() {
-	var email=document.getElementById('email').value;
+	document.getElementById("otp-timer").style.visibility="visible"
+	var email=document.getElementById('floatingInput').value; //floatingInput is email id [changed]
     
 	Email.send({
 	Host: "smtp.gmail.com",
@@ -38,7 +39,7 @@ function sendEmail() {
 	To : email,
 	From : "admssthejus@gmail.com",
 	Subject : "OTP",
-	Body : "THE OTP FOR VERIFIVATION IS  "+a,
+	Body : "THE OTP FOR VERIFIVATION IS"+a,
 	}).then(
 		message => alert("mail sent successfully")
 	);
@@ -48,23 +49,26 @@ function sendEmail() {
 startTimer(fiveMinutes, display);
 }
 function verify(){
-	var entered_otp=document.getElementById("otp").value
+	
+	var entered_otp=document.getElementById("floatingPassword").value //floatingPassword is otp id [changed]
 	if (entered_otp==a){
 		console.log("all set");
 		alert("otp verified");
 	}
 	else{
-		document.getElementById("otp").style.border = "2px solid red"
-		document.getElementById("error_message").innerHTML = "Wrong OTP, Enter email again"
+		console.log("hii")
+		document.getElementById("floatingPassword").style.borderColor= "red"
+		document.getElementById("error-message").innerHTML = "Wrong OTP, Enter email again"
 		// document.getElementById("otp").value=""
 		// location.reload()
-		var delayInMilliseconds = 2000; //1 second
-		setTimeout(function() {
-			document.getElementById("otp").value=""
-			document.getElementById("otp").style.border = "1px solid black"
-			document.getElementById("error_message").innerHTML = ""
-			location.reload();
-		}, delayInMilliseconds);
+		// var delayInMilliseconds = 2000; //1 second
 
+		// setTimeout(function() {
+		// 	document.getElementById("otp").value=""
+		// 	document.getElementById("otp").style.border = "1px solid black"
+		// 	document.getElementById("error_message").innerHTML = ""
+		// }, delayInMilliseconds);
+		console.log("hii")
+		
 	}
 }
