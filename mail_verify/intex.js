@@ -38,7 +38,7 @@ function sendEmail() {
 	To : email,
 	From : "admssthejus@gmail.com",
 	Subject : "OTP",
-	Body : "THE OTP FOR VERIFIVATION IS"+a,
+	Body : "THE OTP FOR VERIFIVATION IS  "+a,
 	}).then(
 		message => alert("mail sent successfully")
 	);
@@ -58,13 +58,13 @@ function verify(){
 		document.getElementById("error_message").innerHTML = "Wrong OTP, Enter email again"
 		// document.getElementById("otp").value=""
 		// location.reload()
-		// var delayInMilliseconds = 2000; //1 second
+		var delayInMilliseconds = 2000; //1 second
+		setTimeout(function() {
+			document.getElementById("otp").value=""
+			document.getElementById("otp").style.border = "1px solid black"
+			document.getElementById("error_message").innerHTML = ""
+			location.reload();
+		}, delayInMilliseconds);
 
-		// setTimeout(function() {
-		// 	document.getElementById("otp").value=""
-		// 	document.getElementById("otp").style.border = "1px solid black"
-		// 	document.getElementById("error_message").innerHTML = ""
-		// }, delayInMilliseconds);
-		
 	}
 }
