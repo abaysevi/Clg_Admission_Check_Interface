@@ -28,7 +28,7 @@ require_once "vendor/autoload.php";
 
 //    $sql =<<<EOF
 //       CREATE TABLE otp
-//       (otps        INT);
+//       (otps        CHAR);
 // EOF;
 
 //    $ret = $db->exec($sql);
@@ -38,29 +38,36 @@ require_once "vendor/autoload.php";
 //       echo "Table created successfully\n";
 //    }
 //    $db->close();
-// 
+
 
 
 $db = new MyDB();
-   if(!$db) {
-      echo $db->lastErrorMsg();
-   } else {
-      echo "Opened database successfully\n";
+if(!$db) {
+   echo $db->lastErrorMsg();
+} else {
+   // echo "Opened database successfully\n";
+}
+
+
+if(array_key_exists('sent_email', $_POST)) {
+   email_send();
+}
+
+function email_send(){
+   
+      $otp_tosend=generateNumericOTP(4);
+      $sql =<<<EOF
+         INSERT INTO otp (otps)
+         VALUES ('$otp_tosend');
+   EOF;
+
+      $ret = $db->exec($sql);
+      if(!$ret){
+         echo $db->lastErrorMsg();
+      } else {
+
+         echo "data added created successfully\n";
+      }
+      $db->close();
    }
-
-   $otp_tosend=generateNumericOTP(4);
-   $sql =<<<EOF
-      INSERT INTO otp (otps)
-      VALUES ('$otp_tosend');
-EOF;
-
-   $ret = $db->exec($sql);
-   if(!$ret){
-      echo $db->lastErrorMsg();
-   } else {
-
-      echo "data added created successfully\n";
-   }
-   $db->close();
-
 ?>
