@@ -10,3 +10,9 @@ CREATE TABLE IF NOT EXISTS `otp_expiry` (
 )
 
 create table info_coll(name varchar(20) not null, PCM_percentage int(100) not null , admi_type varchar(20) not null , prefered_batch varchar(20) not null );
+
+
+
+
+$we&vmwlje$$$$$$
+sai

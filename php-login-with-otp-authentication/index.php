@@ -5,8 +5,9 @@ $conn = mysqli_connect("localhost","root","yoyoyo","emails");
 if(!empty($_POST["submit_email"])) {
 	$result = mysqli_query($conn,"SELECT * FROM registerd_users WHERE email='" . $_POST["email"] . "'");
 	$count  = mysqli_num_rows($result);
-	if($count>0) {
-
+	print($count);
+	if($count==0) {
+		$result=mysqli_query($conn,"INSERT INTO registerd_users(email) VALUES('".$_POST["email"]."')");		
 		// generate OTP
 		$otp = rand(100000,999999);
 		// Send OTP
@@ -21,11 +22,11 @@ if(!empty($_POST["submit_email"])) {
 			if(!empty($current_id)) {
 				$success=1;
 				// echo"yeaaa";
-		}
-	} else {
-		$error_message = "Email Already exixstas";
-
 			}
+		} 
+	}
+	if ($count>0)  {
+		$error_message = "Email Already Used";
 	}
 }
 if(!empty($_POST["submit_otp"])) {
