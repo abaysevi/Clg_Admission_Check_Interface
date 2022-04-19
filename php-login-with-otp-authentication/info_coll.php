@@ -1,12 +1,60 @@
 <?php
+session_start();
+$errnameMsg="";
+$errpercmsg="";
+$nameset=false;
+$isnamealpha=false;
+$percset=false;
+$ispercnum=false;
+$ispercb100=false;
 $conn = mysqli_connect("localhost","root","yoyoyo","emails");
-if(!empty($_POST["Submit_info"])) {
+function go_ahead(){
   $name=$_POST["name"];
   $perc=$_POST["perc"];
   $admin_type=$_POST["type"];
   $pref_branch=$_POST["brach"];
-  $result = mysqli_query($conn,"INSERT INTO info_coll(name,PCM_percentage,admi_type,prefered_batch) VALUES ('".$name."','".$perc."','".$admin_type."','".$pref_branch."')");
+  $result = mysqli_query($conn,"INSERT INTO info_colll(name,PCM_percentage,admi_type,prefered_batch) VALUES ('".$name."','".$perc."','".$admin_type."','".$pref_branch."')");
+  $_SESSION['pcm_perc'] = $perc;
+  header("Location: result_page.php");
 }
+if(!empty($_POST["Submit_info"])) {
+  if (empty($_POST["name"])){
+    $errnameMsg = "*enter the name"; 
+  } 
+  else{
+  $nameset=true
+  }
+  if (!preg_match ("/^[a-zA-z]*$/", $_POST["name"]) ) {  
+      $errnameMsg = "*only alphabets and whitespace are allowed.";
+    }
+  else{
+    $isnamealpha=true;
+
+  } 
+  if (empty($_POST["perc"])){
+   $errpercmsg="*enter the percentage mark";
+  }
+  else{
+  $percset=true;
+  }
+  if (!is_float($_POST["perc"]) && !is_int($_POST["perc"])){
+    $errpercmsg="please enter a Number";
+  }
+  else{
+    $ispercnum=true;
+
+  }
+  if ($_POST["perc"]>=100){
+    $errpercmsg="the value must be below 100 or 100";
+  }
+  else{
+    $ispercb100=true;
+  }
+  if ($nameset and $isnamealpha and $ispercnum and $ispercb100 and $percset){
+    go_ahead();
+  }
+}
+
 ?>
 
 
@@ -58,11 +106,22 @@ input[type=submit]:hover {
   <form method="post" action="">
     <label for="name">Name</label>
     <br>
+    <?php
+    echo $errnameMsg;
+    ?>
+    <br>
     <input type="text" id="name" name="name" placeholder="Your name..">
+
     <br>
     <label for="pcm_perc">PCM (PHYSIC CHEMISTRY MATHS) MARKS PERCENTAGE</label>
     <br>
+    <?php
+    echo $errpercmsg;
+    ?>
+    <br>
     <input type="text" id="perc" name="perc" placeholder="Enter your PERCENTAGE">
+    <br>
+
     <br>
     <label for="type">Type</label>
     <br>

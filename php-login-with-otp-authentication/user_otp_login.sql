@@ -9,7 +9,7 @@ CREATE TABLE IF NOT EXISTS `otp_expiry` (
   `create_at` datetime NOT NULL
 )
 
-create table info_coll(name varchar(20) not null, PCM_percentage int(100) not null , admi_type varchar(20) not null , prefered_batch varchar(20) not null );
+create table info_colll(name varchar(20) not null, PCM_percentage float not null , admi_type varchar(20) not null , prefered_batch varchar(20) not null );
 
 
 
