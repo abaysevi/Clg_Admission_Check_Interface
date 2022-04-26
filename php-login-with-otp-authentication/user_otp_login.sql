@@ -14,5 +14,4 @@ create table info_colll(name varchar(20) not null, PCM_percentage float not null
 
 
 
-$we&vmwlje$$$$$$
-sai
+delete from registerd_users where email="abaysevi012@gmail.com";

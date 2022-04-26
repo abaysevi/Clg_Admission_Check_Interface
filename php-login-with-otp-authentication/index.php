@@ -73,7 +73,7 @@ body{
     max-width: 300px;
     padding: 10px 30px;
     border-radius: 4px;
-    margin-bottom: 5px;    
+    margin-bottom: 5px;    2
 }
 .login-input {
 	border: #CCC 1px solid;

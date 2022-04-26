@@ -7,8 +7,9 @@ $isnamealpha=false;
 $percset=false;
 $ispercnum=false;
 $ispercb100=false;
-$conn = mysqli_connect("localhost","root","yoyoyo","emails");
+// $conn = mysqli_connect("localhost","root","yoyoyo","emails");
 function go_ahead(){
+  $conn = mysqli_connect("localhost","root","yoyoyo","emails");
   $name=$_POST["name"];
   $perc=$_POST["perc"];
   $admin_type=$_POST["type"];
@@ -22,7 +23,7 @@ if(!empty($_POST["Submit_info"])) {
     $errnameMsg = "*enter the name"; 
   } 
   else{
-  $nameset=true
+  $nameset=true;
   }
   if (!preg_match ("/^[a-zA-z]*$/", $_POST["name"]) ) {  
       $errnameMsg = "*only alphabets and whitespace are allowed.";
@@ -37,13 +38,13 @@ if(!empty($_POST["Submit_info"])) {
   else{
   $percset=true;
   }
-  if (!is_float($_POST["perc"]) && !is_int($_POST["perc"])){
-    $errpercmsg="please enter a Number";
+  if (preg_match ("/^[a-zA-z\s]*$/", $_POST["pcm_perc"]) ) {  
+    $ispercnum= "*only numbers";
   }
-  else{
-    $ispercnum=true;
+else{
+  $ispercnum=true;
 
-  }
+}
   if ($_POST["perc"]>=100){
     $errpercmsg="the value must be below 100 or 100";
   }
@@ -51,7 +52,7 @@ if(!empty($_POST["Submit_info"])) {
     $ispercb100=true;
   }
   if ($nameset and $isnamealpha and $ispercnum and $ispercb100 and $percset){
-    go_ahead();
+    go_ahead($_POST["name"],$_POST["brach"],$_POST["type"],$_POST["perc"]);
   }
 }
 
