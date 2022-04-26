@@ -25,7 +25,7 @@ if(!empty($_POST["Submit_info"])) {
   else{
   $nameset=true;
   }
-  if (!preg_match ("/^[a-zA-z]*$/", $_POST["name"]) ) {  
+  if (!preg_match ("/^[a-zA-z\s]*$/", $_POST["name"]) ) {  
       $errnameMsg = "*only alphabets and whitespace are allowed.";
     }
   else{
