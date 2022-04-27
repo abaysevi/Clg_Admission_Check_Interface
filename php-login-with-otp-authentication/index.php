@@ -42,58 +42,21 @@ if(!empty($_POST["submit_otp"])) {
 }
 ?>
 <html>
-<head>
 <title>User Login</title>
+<head>
+
+<meta content="width=device-width, initial-scale=1" name="viewport" />
+<link rel="stylesheet" href="css/style.css">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
 		integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
 		integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
 		crossorigin="anonymous"></script>
-<style>
-body{
-	font-family: calibri;
-}
-.tblLogin {
-	border: #95bee6 1px solid;
-    background: #d1e8ff;
-    border-radius: 4px;
-    max-width: 300px;
-	padding:20px 30px 30px;
-	text-align:center;
-}
-.tableheader { font-size: 20px; }
-.tablerow { padding:20px; }
-.error_message {
-	color: #b12d2d;
-    background: #ffb5b5;
-    border: #c76969 1px solid;
-}
-.message {
-	width: 100%;
-    max-width: 300px;
-    padding: 10px 30px;
-    border-radius: 4px;
-    margin-bottom: 5px;    2
-}
-.login-input {
-	border: #CCC 1px solid;
-    padding: 10px 20px;
-	border-radius:4px;
-}
-.btnSubmit {
-	padding: 10px 20px;
-    background: #2c7ac5;
-    border: #d1e8ff 1px solid;
-    color: #FFF;
-	border-radius:4px;
-}
-
-</style>
 </head>
-<body >
+<body>
+	<div class="whole">
 
-	<center>
-		<br>
+	
 	<img class="mb-4" src="http://www.thejusengg.ac.in/assets/images/thejus-logo.png" alt="" width="80"
 				height="80">
 			<h1 class="h3 mb-3 fw-normal">Please Verify</h1>
@@ -135,5 +98,8 @@ body{
 		?>
 	</div>
 </form>
-</center>
+</div>
+
+
+	
 </body></html>
