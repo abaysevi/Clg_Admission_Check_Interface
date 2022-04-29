@@ -14,7 +14,8 @@ function go_ahead(){
   $perc=$_POST["perc"];
   $admin_type=$_POST["type"];
   $pref_branch=$_POST["brach"];
-  $result = mysqli_query($conn,"INSERT INTO info_colll(name,PCM_percentage,admi_type,prefered_batch) VALUES ('".$name."','".$perc."','".$admin_type."','".$pref_branch."')");
+	$hash_val = rand(10000,99999);
+  $result = mysqli_query($conn,"INSERT INTO info_colll(hashval,name,PCM_percentage,admi_type,prefered_batch) VALUES ('".$hash_val."','".$name."','".$perc."','".$admin_type."','".$pref_branch."')");
   $_SESSION['pcm_perc'] = $perc;
   header("Location: result_page.php");
 }
