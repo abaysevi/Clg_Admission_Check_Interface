@@ -7,7 +7,7 @@ function sendOTP($email,$otp) {
 
 		require_once "vendor/autoload.php";
 	
-		$message_body = "One Time Password for PHP login authentication is:<br/><br/>" . $otp;
+		$message_body = "One Time Password for Email Verification is  is:<br/><br/>" ."<strong>".$otp."</strong>";
 		$mail = new PHPMailer();
 		$mail->IsSMTP();
 		$mail->SMTPDebug = 0;

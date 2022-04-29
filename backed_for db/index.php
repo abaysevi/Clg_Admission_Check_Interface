@@ -67,6 +67,11 @@
 
         <input type="submit" name="view_data" value="View Collected Data" />
 
+        <input type="submit" name="btn_see_nri_fee" value="Add NRI Fee Struct" />
+
+        <input type="submit" name="btn_see_mgmt_fee" value="Add MGMT Fee Struct" />
+
+
         <br><br>
 
     </form>
@@ -147,6 +152,91 @@ function remove_this_entry(){
     $conn->close();
 }
 
+function see_nri_fee(){
+
+    $conn = mysqli_connect("localhost","root","yoyoyo","emails");
+    $result= mysqli_query($conn,"SELECT * FROM fee_struct_nri;");
+    if ($result->num_rows > 0) {
+        // output data of each row
+        echo "<table id=\"student\">"; 
+        echo "<tr><th>" . 
+        "<strong>PCM MARK</strong>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp". 
+        "</th><th>" . "<strong>Respected FEE</strong>". "</th></tr>";  
+
+        while($row = $result->fetch_assoc()) {
+            echo "<tr><td>" . htmlspecialchars($row['pcm_perc']) .
+             "</td><td>" . htmlspecialchars($row['eql_fee']) . 
+             "</td></tr>";
+        }
+        echo "</table>";
+        $conn->close();
+
+
+    }
+    echo"<form method=\"post\">";
+    echo"<h3>Enter PCM MARK:</h3><input type=\"text\" name=\"pcm_mark_nri\">&nbsp&nbsp&nbsp&nbsp";//TextBox For PCM Mark
+    echo"<h3>Eter EQL NRI FEE:</h3><input type=\"text\" name=\"resp_fee_nri\">&nbsp&nbsp&nbsp&nbsp";
+    echo"<input type=\"submit\" name=\"btn_add_nri_fee\" value=\"Add Entry\" />";
+    echo"</form>";
+
+}
+
+function see_mgmt_fee(){
+
+    
+    $conn = mysqli_connect("localhost","root","yoyoyo","emails");
+    $result= mysqli_query($conn,"SELECT * FROM fee_struct_mgmt;");
+    if ($result->num_rows > 0) {
+        // output data of each row
+        echo "<table id=\"student\">"; 
+        echo "<tr><th>" . 
+        "<strong>PCM MARK</strong>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp". 
+        "</th><th>" . "<strong>Respected FEE</strong>". "</th></tr>";  
+
+        while($row = $result->fetch_assoc()) {
+            echo "<tr><td>" . htmlspecialchars($row['pcm_perc']) .
+             "</td><td>" . htmlspecialchars($row['eql_fee']) . 
+             "</td></tr>";
+        }
+        echo "</table>";
+        $conn->close();
+
+    }
+    echo"<form method=\"post\">";
+    echo"<h3>Enter PCM MARK:</h3><input type=\"text\" name=\"pcm_mark_mgmt\">&nbsp&nbsp&nbsp&nbsp";//TextBox For PCM Mark
+    echo"<h3>Eter Eql MGMT Fee:</h3><input type=\"text\" name=\"resp_fee_mgmt\">&nbsp&nbsp&nbsp&nbsp";
+    echo"<input type=\"submit\" name=\"btn_add_mgmt_fee\" value=\"Add Entry\" />";
+    echo"</form>";
+}
+
+function add_mgmt_fee(){
+    if (!empty($_POST["pcm_mark_mgmt"]) and !empty($_POST["resp_fee_mgmt"]) ){
+        $pcm_mark=$_POST['pcm_mark_mgmt'];
+        $resp_fee=$_POST['resp_fee_mgmt'];
+        $conn = mysqli_connect("localhost","root","yoyoyo","emails");
+        $result= mysqli_query($conn,"INSERT INTO fee_struct_mgmt(pcm_perc,eql_fee) values('".$pcm_mark."','".$resp_fee."')");
+        $conn->close();
+
+    }
+
+}
+
+function add_nri_fee(){
+    if (!empty($_POST["pcm_mark_nri"]) and !empty($_POST["resp_fee_nri"]) ){
+        $pcm_mark=$_POST['pcm_mark_nri'];
+        $resp_fee=$_POST['resp_fee_nri'];
+        $conn = mysqli_connect("localhost","root","yoyoyo","emails");
+        echo"set";
+        $result= mysqli_query($conn,"INSERT INTO fee_struct_nri(pcm_perc,eql_fee) values('".$pcm_mark."','".$resp_fee."')");
+        $conn->close();
+    }
+else{
+    echo"ivalide";
+}
+
+}
+
+
 
 if(!empty($_POST["view_mails"])) {
     see_emails();
@@ -165,6 +255,30 @@ if(!empty($_POST["remove_hash"])) {
     remove_this_entry();
     see_data();
     echo"<h3 style=\"color:red;\">*Item Deleted</h3>";
+}
+if(!empty($_POST["btn_see_nri_fee"])) {
+see_nri_fee();
+}
+
+if(!empty($_POST["btn_see_mgmt_fee"])) {
+    see_mgmt_fee();
+}
+
+if(!empty($_POST["btn_add_mgmt_fee"])) {
+    add_mgmt_fee();
+    see_mgmt_fee();
+    echo"<h3 style=\"color:green;\">*Item Added</h3>";
+
+
+}
+
+if(!empty($_POST["btn_add_nri_fee"])) {
+    add_nri_fee();
+    see_nri_fee();
+    echo"<h3 style=\"color:green;\">*Item Added</h3>";
+
+
+
 }
 
 ?>

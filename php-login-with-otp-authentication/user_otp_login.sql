@@ -12,6 +12,4 @@ CREATE TABLE IF NOT EXISTS `otp_expiry` (
 create table info_colll(hashval int,name varchar(20) not null, PCM_percentage float not null , admi_type varchar(20) not null , prefered_batch varchar(20) not null );
 
 
-
-
 delete from registerd_users where email="abaysevi012@gmail.com";

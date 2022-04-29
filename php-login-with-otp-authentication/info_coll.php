@@ -17,6 +17,7 @@ function go_ahead(){
 	$hash_val = rand(10000,99999);
   $result = mysqli_query($conn,"INSERT INTO info_colll(hashval,name,PCM_percentage,admi_type,prefered_batch) VALUES ('".$hash_val."','".$name."','".$perc."','".$admin_type."','".$pref_branch."')");
   $_SESSION['pcm_perc'] = $perc;
+  $_SESSION['admi_type']=$admin_type;
   header("Location: result_page.php");
 }
 if(!empty($_POST["Submit_info"])) {

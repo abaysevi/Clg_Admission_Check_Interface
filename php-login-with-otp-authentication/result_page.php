@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <head>
-	<title>CSS Box Model</title>
+	<title>Result Page</title>
 	<style>
 	.main {
 		font-size: 36px;
@@ -48,12 +48,24 @@
 	$conn = mysqli_connect("localhost","root","yoyoyo","emails");
 
 	$mark = $_SESSION['pcm_perc'];
+	$type=$_SESSION['admi_type'];
+	if ($type=="MGMT"){
 		$mark=intval($mark);
-		$result = mysqli_query($conn,"SELECT eql_fee from fee_struct where pcm_perc=$mark;");	
+		$result = mysqli_query($conn,"SELECT eql_fee from fee_struct_mgmt where pcm_perc=$mark;");	
 
 		while($row = mysqli_fetch_array($result)) {
 			$final=$row['eql_fee']; // Print a single column data     // Print the entire row data
 		}
+
+	}
+	if ($type=="NRI"){
+		$mark=intval($mark);
+		$result = mysqli_query($conn,"SELECT eql_fee from fee_struct_nri where pcm_perc=$mark;");	
+
+		while($row = mysqli_fetch_array($result)) {
+			$final=$row['eql_fee']; // Print a single column data     // Print the entire row data
+		}
+	}
 
 	?>
 </head>
