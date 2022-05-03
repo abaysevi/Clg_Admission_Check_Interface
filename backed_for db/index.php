@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Data collectd</title>
+    <title>BackEnd DATA</title>
 
     <style>
         input[type=text] {
@@ -230,9 +230,7 @@ function add_nri_fee(){
         $result= mysqli_query($conn,"INSERT INTO fee_struct_nri(pcm_perc,eql_fee) values('".$pcm_mark."','".$resp_fee."')");
         $conn->close();
     }
-else{
-    echo"ivalide";
-}
+
 
 }
 
