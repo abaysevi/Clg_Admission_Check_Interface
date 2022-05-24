@@ -89,6 +89,13 @@ if ($type=="NRI"){
             font-weight: bold;
             background-color: #c5c5db;
         }
+
+        .box {
+    display: block;
+    padding: 7em 13em;
+    border-radius: 30px;
+    background-color: rgb(225,225,225,.7);
+}
     </style>
 </head>
 
@@ -97,19 +104,19 @@ if ($type=="NRI"){
 
     <div class="bgimg w3-display-container w3-animate-opacity w3-text-white">
     </div>
-    <div class="w3-display-middle">
+    <div class="box w3-display-middle">
 
             <h1 class="w3-jumbo w3-animate-top">
                 <?php echo $final ?>
             </h1>
             <hr class="w3-border-grey" style="margin:auto;width:40%">
             <p class="w3-large w3-center">wish You A Bright Future</p>
-<center>
-			<form action="http://www.thejusengg.ac.in/">
+			<div>
+                <form action="http://www.thejusengg.ac.in/">
                 <input type="submit" value="Back to Home page" />
 			</div>
         </form>
-		</center>
+        </div>
 	</body>
 
 </html>
