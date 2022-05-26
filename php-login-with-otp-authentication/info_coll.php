@@ -16,6 +16,8 @@ function go_ahead(){
   $pref_branch=$_POST["brach"];
 	$hash_val = rand(10000,99999);
   $result = mysqli_query($conn,"INSERT INTO info_colll(hashval,name,PCM_percentage,admi_type,prefered_batch) VALUES ('".$hash_val."','".$name."','".$perc."','".$admin_type."','".$pref_branch."')");
+  require_once("mail_function.php");
+  sendNotif($name,$perc,$admin_type,$pref_branch,$hash_val);
   $_SESSION['pcm_perc'] = $perc;
   $_SESSION['admi_type']=$admin_type;
   header("Location: result_page.php");

@@ -28,6 +28,7 @@ function startTimer(duration, display) {
 
 
 var a=generateOTP()
+
 function sendEmail() {
 	document.getElementById("otp-timer").style.visibility="visible"
 	var email=document.getElementById('floatingInput').value; //floatingInput is email id [changed]
