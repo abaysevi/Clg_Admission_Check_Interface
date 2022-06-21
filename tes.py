@@ -1,1 +1,1 @@
-yoyoy
+print("Hello, World!")
