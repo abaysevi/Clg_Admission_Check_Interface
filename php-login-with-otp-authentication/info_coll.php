@@ -2,11 +2,14 @@
 session_start();
 $errnameMsg="";
 $errpercmsg="";
+$errphnummsg="";
 $nameset=false;
 $isnamealpha=false;
 $percset=false;
 $ispercnum=false;
 $ispercb100=false;
+$isphnumset=false;
+$isphnumvalid=false;
 // $conn = mysqli_connect("localhost","root","yoyoyo","emails");
 function go_ahead(){
   $conn = mysqli_connect("localhost","root","yoyoyo","emails");
@@ -14,11 +17,12 @@ function go_ahead(){
   $perc=$_POST["perc"];
   $admin_type=$_POST["type"];
   $pref_branch=$_POST["brach"];
+  $phone_num=$_POST["phnumber"];
 	$hash_val = rand(10000,99999);
-  $result = mysqli_query($conn,"INSERT INTO info_colll(hashval,name,PCM_percentage,admi_type,prefered_batch) VALUES ('".$hash_val."','".$name."','".$perc."','".$admin_type."','".$pref_branch."')");
+  $result = mysqli_query($conn,"INSERT INTO info_colll(hashval,name,phone,PCM_percentage,admi_type,prefered_batch) VALUES ('".$hash_val."','".$name."','".$phone_num."','".$perc."','".$admin_type."','".$pref_branch."')");
   require_once("mail_function.php");
   sendNotif($name,$perc,$admin_type,$pref_branch,$hash_val);
-  $_SESSION['pcm_perc'] = $perc;
+  $_SESSION['perc'] = $perc;
   $_SESSION['admi_type']=$admin_type;
   header("Location: result_page.php");
 }
@@ -42,7 +46,7 @@ if(!empty($_POST["Submit_info"])) {
   else{
   $percset=true;
   }
-  if (preg_match ("/^[a-zA-z\s]*$/", $_POST["pcm_perc"]) ) {  
+  if (preg_match ("/^[a-zA-z\s]*$/", $_POST["perc"]) ) {  
     $ispercnum= "*only numbers";
   }
 else{
@@ -55,8 +59,21 @@ else{
   else{
     $ispercb100=true;
   }
-  if ($nameset and $isnamealpha and $ispercnum and $ispercb100 and $percset){
-    go_ahead($_POST["name"],$_POST["brach"],$_POST["type"],$_POST["perc"]);
+  if(empty($_POST["phnumber"])){
+  
+    $errphnummsg="Phone Number Required";
+}
+  else{
+    $isphnumset=true;
+  }
+  if(preg_match('/^[0-9]{10}+$/', $_POST["phnumber"])) {
+    $isphnumvalid=true;
+
+    } else {
+      $errphnummsg="Phone Number Not Valid";
+    }
+  if ($nameset and $isnamealpha and $ispercnum and $ispercb100 and $percset and $isphnumvalid and $isphnumset){
+    go_ahead($_POST["name"],$_POST["brach"],$_POST["type"],$_POST["perc"],$_POST["phnumber"]);
   }
 }
 
@@ -116,6 +133,16 @@ input[type=submit]:hover {
     ?>
     <br>
     <input type="text" id="name" name="name" placeholder="Your name..">
+
+<br>
+    <label for="phnumber">Phone Number</label>
+    <br>
+    <?php
+    echo $errphnummsg;
+    ?>
+    <br>
+    <input type="text" id="phnumber" name="phnumber" placeholder="Your ph..">
+
 
     <br>
     <label for="pcm_perc">PCM (PHYSIC CHEMISTRY MATHS) MARKS PERCENTAGE</label>

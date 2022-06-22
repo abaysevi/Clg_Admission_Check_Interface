@@ -30,10 +30,16 @@ if ($type=="NRI"){
 <head>
     <title>W3.CSS Template</title>
     <meta charset="UTF-8">
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1"> -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
     <style>
+        @media only screen and (max-width: 600px) {
+    .whole {
+        height: 80%;
+    }
+}
         body,
         h1 {
 			font-family: 'Brush Script MT', cursive;
@@ -92,8 +98,8 @@ if ($type=="NRI"){
 
         .box {
     display: block;
-    padding: 7em 13em;
-    border-radius: 30px;
+    padding: 1em 7em;
+    border-radius: 5px;
     background-color: rgb(225,225,225,.7);
 }
     </style>

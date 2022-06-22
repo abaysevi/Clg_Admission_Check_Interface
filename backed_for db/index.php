@@ -112,6 +112,7 @@ function see_data(){
         echo "<tr><th>" . 
         "<strong>Hash Value</strong>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp". 
         "</th><th>" . "<strong>Name</strong>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp".
+        "</th><th>" . "<strong>Phone</strong>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp".
         "</th><th>" . "<strong>PCM MARK</strong>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp".
         "</th><th>" . "<strong>Admission Type</strong>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp" .
         "</th><th>" . "<strong>Prefered Branch</strong>". "</th></tr>";  
@@ -119,6 +120,7 @@ function see_data(){
         while($row = $result->fetch_assoc()) {
             echo "<tr><td>" . htmlspecialchars($row['hashval']) .
             "</td><td>" . htmlspecialchars($row['name']) .
+            "</td><td>" . htmlspecialchars($row['phone']) .
              "</td><td>" . htmlspecialchars($row['PCM_percentage']) .
              "</td><td>" . htmlspecialchars($row['admi_type']) .
              "</td><td>" . htmlspecialchars($row['prefered_batch']) . 
