@@ -15,7 +15,7 @@ function sendOTP($email,$otp) {
 		$mail->SMTPSecure = 'tls'; // tls or ssl
 		$mail->Port     = 587;
 		$mail->Username = "admssthejus@gmail.com";
-		$mail->Password = "cytsnhgljqutwfha";
+		// $mail->Password = "cytsnhgljqutwfha";
 		$mail->Host     = "smtp.gmail.com";
 		$mail->Mailer   = "smtp";
 		// $mail->SetFrom("FROM EMAIL", "FROM NAME");
@@ -69,7 +69,7 @@ function sendNotif($name1,$perc1,$admin_type1,$pref_branch1,$hash_val1) {
 		$mail->SMTPSecure = 'tls'; // tls or ssl
 		$mail->Port     = 587;
 		$mail->Username = "admssthejus@gmail.com";
-		$mail->Password = "cytsnhgljqutwfha";
+		// $mail->Password = "cytsnhgljqutwfha";
 		$mail->Host     = "smtp.gmail.com";
 		$mail->Mailer   = "smtp";
 		$mail->SetFrom("FROM EMAIL", "FROM NAME");
